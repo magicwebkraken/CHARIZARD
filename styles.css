@@ -1,0 +1,2131 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #fff;
+  line-height: 1.6;
+  text-align: center;
+  padding-top: 60px;  /* Adjust this to match top bar height */
+}
+
+/* Rotating Background Effect */
+@keyframes rotateGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Starburst Background Effect */
+@keyframes rotateBurst {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Hypnotic Spiral Animation */
+@keyframes spinSpiral {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+/* Section spacing adjustment */
+section, header {
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 30px;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* First section margin adjustment */
+section:first-of-type {
+  margin-top: initial;  /* Remove any special first section margin */
+}
+
+/* Last section margin adjustment */
+section:last-of-type {
+  margin-bottom: 5px;  /* Small bottom margin */
+}
+
+/* Background Effects */
+@keyframes twinkle {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+@keyframes spiralSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+/* Adjust spiral overlay */
+.spiral-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500%;
+    height: 500%;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
+    background: 
+        radial-gradient(
+            circle at center,
+            transparent 0%,
+            rgba(64, 224, 208, 0.15) 41%,
+            transparent 45%,
+            rgba(64, 224, 208, 0.15) 46%,
+            transparent 50%,
+            rgba(64, 224, 208, 0.15) 51%,
+            transparent 55%,
+            rgba(64, 224, 208, 0.15) 56%,
+            transparent 60%
+        );
+    background-size: 150% 150%;
+    z-index: -2;
+    animation: spiralSpin 30s linear infinite;
+}
+
+/* Adjust background container to prevent white edges */
+.background-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500%;
+    height: 500%;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;   
+    background: repeating-conic-gradient(
+        from 0deg,
+        #8A6EEE,
+        #8A6EEE,
+        #ff0000,
+        #ff0000,
+        #8A6EEE,
+        #8A6EEE
+        30deg
+    );
+    background-size: 150% 150%;
+    z-index: -3;
+    opacity: 0.85;
+    background-attachment: fixed;
+    animation: rotateBurstBg 60s linear infinite;
+}
+
+@keyframes rotateBurstBg {
+    from {
+        background-position: center;
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        background-position: center;
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Four-pointed star and animations */
+@keyframes moveStar {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(15px, 15px); }
+  50% { transform: translate(0, 30px); }
+  75% { transform: translate(-15px, 15px); }
+  100% { transform: translate(0, 0); }
+}
+
+.star {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: white;
+  clip-path: polygon(
+    50% 0%,    /* top point */
+    65% 35%,   /* top-right edge */
+    100% 50%,  /* right point */
+    65% 65%,   /* bottom-right edge */
+    50% 100%,  /* bottom point */
+    35% 65%,   /* bottom-left edge */
+    0% 50%,    /* left point */
+    35% 35%    /* top-left edge */
+  );
+}
+
+.star.moving {
+  animation: moveStar 12s linear infinite;
+}
+
+.star.twinkling {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Main container with adjusted color */
+.container {
+    width: 1400px !important;
+    min-width: 0 !important;
+    max-width: 1400px !important;
+    margin: 0 auto 40px;
+    padding-top: 70px;  /* Add significant top padding inside the card */
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-bottom: 35px;
+    position: relative;
+    display: block;
+    background: linear-gradient(145deg, #d96349, #d96349);
+    border-radius: 15px;
+    border: 15px solid #f2d867;
+    box-sizing: border-box;
+}
+
+/* Ensure inner sections don't force container width */
+.container > * {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+/* Inner sections - keep dark background for contrast */
+.hero-section, #what-is, #upcoming-events {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.95), rgba(51, 51, 51, 0.95));
+}
+
+/* Last section shouldn't have bottom margin */
+#upcoming-events {
+  margin-bottom: 0;
+}
+
+/* Hero section with natural spacing */
+.hero-section {
+    border: 4px solid #e93a1f;
+    border-radius: 12px;
+    padding: 35px 35px 20px;  /* Reduced bottom padding */
+    margin: 35px auto;
+    background: linear-gradient(180deg, rgba(26, 26, 26, 0.95), rgba(51, 51, 51, 0.95));
+    width: calc(100% - 70px);
+    box-sizing: border-box;
+}
+
+/* Add spacing wrapper for hero section */
+.title-container {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+/* Combined title and charizard display */
+.title-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Charizard Display with enhanced glow */
+.charizard-display {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+  transform-origin: center center;
+}
+
+.charizard-display img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(255, 69, 0, 0.2);  /* Default state glow */
+}
+
+.charizard-display:hover img {
+  transform: scale(1.02);
+  box-shadow: 0 0 50px rgba(255, 69, 0, 0.5);  /* Increased glow on hover */
+}
+
+/* Other sections within container */
+#what-is, #upcoming-events {
+  border: 4px solid #ff4500;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 30px;
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.95), rgba(51, 51, 51, 0.95));
+  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.2);  /* Match shadow style */
+}
+
+/* Remove old card container border */
+.card-container {
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+/* Remove old community-cta from card container */
+.card-container .community-cta {
+  display: none;
+}
+
+/* Telegram section adjustments */
+.telegram-section {
+    width: 75%;
+    max-width: 750px;
+    margin-top: 60px !important;  /* Force top margin */
+    margin-bottom: 60px !important;  /* Force bottom margin */
+    padding: 20px;
+    background: #f2d867;
+    border: 2px solid #000;
+    border-radius: 12px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+    visibility: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure consistent spacing between sections */
+.main-section,
+#what-is,
+#upcoming-events,
+.community-wallet,
+.x-post-section,
+.telegram-section {
+    margin: 60px auto;  /* Consistent spacing */
+}
+
+/* Keep telegram section centered */
+.telegram-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* Community CTA - Adjusted for new layout */
+.community-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.community-cta p {
+  margin: 0;
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;  /* Center the text */
+}
+
+/* Telegram button styling */
+.telegram-button {
+    position: absolute;
+    left: -165px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: none;
+    border-radius: 20px;
+    color: #f2d867;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 2;
+    animation: gentlePulse 2s ease-in-out infinite;
+}
+
+/* Remove transform on hover, keep only glow */
+.telegram-button:hover {
+    box-shadow: -3px 3px 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Yellow bar hover effect */
+.telegram-section:hover .telegram-button {
+    box-shadow: -3px 3px 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Scale pulse animation - keeping vertical position */
+@keyframes gentlePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.telegram-button img {
+    height: 32px;  /* Increased from 24px */
+    width: auto;
+    filter: none;
+    margin-bottom: 2px;
+}
+
+/* Remove shine effect */
+.telegram-button::after {
+    display: none;
+}
+
+/* Keep icon styling */
+.telegram-button img {
+    height: 32px;  /* Increased from 24px */
+    width: auto;
+    filter: none;
+}
+
+/* Remove any potential interfering styles */
+.telegram-section * {
+  box-sizing: border-box;
+}
+
+/* Content width constraint */
+section, header {
+  width: 100%;           /* Full width */
+  max-width: 1000px;     /* Maximum width */
+  margin-bottom: 30px;  /* Keep consistent bottom margins */
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* Center section contents */
+}
+
+/* Keep header full width but content centered */
+header h1, header p {
+  width: 100%;
+  max-width: 1000px;
+  text-align: center;
+}
+
+/* Ensure sections are centered */
+section {
+  text-align: center;
+}
+
+/* Center section content */
+section h2, section p {
+  width: 100%;
+  text-align: center;
+}
+
+/* Top Fixed Bar */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Changed to space-between */
+  z-index: 100;
+  animation: none;  /* Remove any animations */
+}
+
+.top-bar-content {
+  width: 1400px;  /* Match container width */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;  /* Align items to the right */
+  gap: 4px;  /* Minimal gap between elements */
+}
+
+.top-bar span {
+  color: #e93a1f;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;  /* Minimal gap between icons */
+  margin-right: 4px;  /* Small space before token address */
+}
+
+/* Social icons base styling */
+.social-links img {
+    height: 24px;
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+/* Remove filters to show original icon colors */
+.social-links a[href*="t.me"] img,
+.social-links a[href*="dexscreener"] img {
+    filter: none;  /* Show original icon without white/orange overlay */
+}
+
+/* Hover effects */
+.social-links a:hover img {
+    transform: scale(1.1);
+    filter: none;  /* Remove color change */
+    box-shadow: 0 0 15px rgba(233, 58, 31, 0.5);  /* Orange glow */
+}
+
+/* Token Address Styling */
+.token-address {
+  color: #ddd;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #f2d867;
+}
+
+.token-label {
+  color: #ff4500;
+  font-weight: bold;
+}
+
+.token-text {
+  width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.token-text span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scrolling 15s linear infinite;
+}
+
+.copy-icon {
+  width: 18px;  /* Increased size */
+  height: 18px;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.copy-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+/* Header Styling */
+header {
+  width: 100%;
+  margin: 20px auto 60px;  /* Adjusted margins */
+  padding: 30px;
+  border-radius: 12px;
+}
+
+header h1 {
+  font-size: 4.5rem;
+  color: #ff4500;
+  text-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+  margin: 40px 0;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+header p {
+  font-size: 1.4rem;
+  color: #ddd;
+  margin-bottom: 30px;
+}
+
+/* Main GIF Display */
+#introduction {
+  margin: 40px 0;
+  border: 15px solid #FFD700;  /* Pokemon card yellow border */
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);  /* Golden glow */
+}
+
+#introduction img {
+  max-width: 80%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(255, 69, 0, 0.4);
+  margin: 30px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#introduction img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+/* Section Styling */
+section {
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.9), rgba(51, 51, 51, 0.9));
+  margin: 50px 0;  /* Increased margin between sections */
+  padding: 35px;   /* Increased internal padding */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.2);
+  border: 2px solid #ff4500;  /* Default border */
+}
+
+/* Yellow border for specific sections */
+#get-it,
+#what-is,
+#how-to-buy {
+  border: 15px solid #FFD700;  /* Pokemon card yellow border */
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);  /* Golden glow */
+}
+
+section h2 {
+  color: #ff4500;
+}
+
+section h3 {
+  color: #ff4500;
+}
+
+section p {
+  color: #ddd;
+}
+
+/* Image Styling */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  display: block;
+  margin: 20px auto;
+}
+
+/* Steps Styling */
+.steps ol {
+  list-style: decimal;
+  text-align: left;
+  padding-left: 30px;
+  font-size: 1.2rem;
+}
+
+.steps li {
+  margin-bottom: 15px;
+}
+
+.steps li h3 {
+  font-size: 1.8rem;
+  color: #ff4500;
+  margin-bottom: 5px;
+}
+
+/* Link Styling */
+a {
+  color: #ff4500;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+button {
+  background: #ff4500;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 69, 0, 0.3);
+}
+
+button:hover {
+  background: #ff6934;
+  box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+}
+
+/* Adding sleek sections */
+.sleek-section {
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.9), rgba(51, 51, 51, 0.9));
+  border: 2px solid #ff4500;
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.2);
+}
+
+#how-to-buy {
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.9), rgba(51, 51, 51, 0.9));
+  color: #fff;
+}
+
+#how-to-buy h2 {
+  color: #ff4500;
+}
+
+#how-to-buy .steps li h3 {
+  color: #ff4500;
+}
+
+#how-to-buy .steps li p {
+  color: #ddd;
+}
+
+/* Remove footer since we moved the token address */
+footer {
+  display: none;
+}
+
+/* Remove old sections that are now in top bar */
+#get-it {
+  display: none;
+}
+
+/* Stars container adjustment */
+.stars-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Hero Section Styling */
+.hero-section {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 50px;
+  padding-top: 40px;  /* Reduced from default */
+  margin-top: -20px;  /* Pull up entire section */
+}
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');  /* Comic-like font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');  /* Retro gaming font */
+
+/* Title Container - Reduced top spacing */
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-top: 20px;  /* Reduced from 40px */
+  position: relative;
+  z-index: 2;
+}
+
+.introducing-wrapper {
+  margin-top: -20px;  /* Pull up from top */
+  margin-bottom: -10px;  /* Maintain spacing with title */
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.title-container h1 {
+  font-family: 'Bangers', cursive;
+  font-size: 4.8rem;
+  color: #c13a1c;
+  text-shadow: 
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    0 0 20px rgba(193, 58, 28, 0.5);
+  letter-spacing: 2px;
+  animation: titlePop 0.5s ease-out;
+}
+
+@keyframes titlePop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.title-container h1 span {
+  font-family: 'Press Start 2P', cursive;  /* Retro gaming font for $ */
+  font-size: 4.2rem;
+  vertical-align: -5%;
+  margin-right: 10px;
+}
+
+.introducing-text {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.4rem;
+  color: #FFD700;
+  text-shadow: 
+    2px 2px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  letter-spacing: 2px;
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Solana Icon - subtle positioning in card */
+.solana-badge {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.solana-badge:hover {
+  opacity: 1;
+  transform: rotate(360deg);
+}
+
+/* Normal wobble */
+@keyframes gentleWobble {
+  0%, 100% { 
+    transform: rotate(-1deg); 
+  }
+  50% { 
+    transform: rotate(1deg); 
+  }
+}
+
+/* Excited wobble for click */
+@keyframes excitedWobble {
+  0%, 100% { 
+    transform: rotate(-2deg); 
+  }
+  25% { 
+    transform: rotate(3deg); 
+  }
+  50% { 
+    transform: rotate(-3deg); 
+  }
+  75% { 
+    transform: rotate(2deg); 
+  }
+}
+
+.charizard-display {
+  animation: gentleWobble 4s ease-in-out infinite;
+}
+
+.charizard-display.clicked {
+  animation: excitedWobble 0.5s ease-in-out;
+}
+
+/* Title animations */
+@keyframes glow {
+  0%, 100% { 
+    text-shadow: 
+      3px 3px 0 #000,
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000,
+      0 0 15px rgba(255, 215, 0, 0.5);
+    transform: scale(1);
+  }
+  50% { 
+    text-shadow: 
+      3px 3px 0 #000,
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000,
+      0 0 25px rgba(255, 215, 0, 0.8);
+    transform: scale(1.05);
+  }
+}
+
+/* Fiery How to Buy Dropdown */
+.how-to-buy-trigger {
+  background: transparent;  /* Reset to transparent */
+  color: #f2d867;  /* New yellow for text */
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 2px solid #f2d867;  /* New yellow border */
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;  /* Contain the shine effect */
+}
+
+.how-to-buy-trigger:hover {
+  background: rgba(242, 216, 103, 0.1);  /* Slight yellow glow on hover */
+  box-shadow: 0 0 10px rgba(242, 216, 103, 0.3);
+}
+
+/* Flame animation for trigger button */
+.how-to-buy-trigger::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;  /* Start from outside the button */
+  width: 50%;   /* Narrower width for shine */
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 45%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.2) 55%,
+    transparent 100%
+  );
+  animation: button-shine 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes button-shine {
+  0% { left: -100%; }
+  50% { left: 200%; }
+  100% { left: 200%; }
+}
+
+/* How to Buy Content styling - Yellow border */
+.how-to-buy-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 350px;
+  background: rgba(217, 99, 73, 0.9);
+  border: 2px solid #f2d867;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 10px;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);  /* Adjusted shadow to match border */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  border-top: 2px solid #f2d867;
+}
+
+/* Show content when active */
+.how-to-buy-dropdown.active .how-to-buy-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* How to Buy step styling */
+.how-to-buy-step {
+  position: relative;
+  padding: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(51, 51, 51, 0.9));
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 1px solid #f2d867;
+}
+
+.how-to-buy-step:hover {
+  transform: translateY(-2px);
+  border-color: #ff4500;
+  box-shadow: 0 10px 20px rgba(255, 69, 0, 0.2);
+}
+
+.how-to-buy-step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 69, 0, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.how-to-buy-step:hover::before {
+  transform: translateX(100%);
+}
+
+.how-to-buy-step-title {
+  color: #f2d867;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.how-to-buy-step-details {
+  color: #fff;  /* Matched with upcoming events text */
+  font-size: 0.95em;
+  line-height: 1.5;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.how-to-buy-step.active .how-to-buy-step-details {
+  opacity: 1;
+  height: auto;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid rgba(242, 216, 103, 0.2);
+}
+
+/* Keep existing progress bar styles */
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: #f2d867;
+  transition: width 0.5s ease;
+}
+
+/* Progress bar animation on hover */
+.how-to-buy-step:hover .progress-bar {
+  width: 100%;
+  transition: width 1.5s linear;
+}
+
+/* Reset progress on hover out */
+.how-to-buy-step:not(:hover):not(.active) .progress-bar {
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+/* Keep progress bar full when active */
+.how-to-buy-step.active .progress-bar {
+  width: 100%;
+}
+
+/* Single consolidated media query */
+@media (max-width: 768px) {
+    .container,
+    .main-section,
+    .hero-section,
+    .community-wallet,
+    .x-post-section,
+    .nft-section {
+        width: 95% !important;
+        min-width: 0 !important;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .top-bar,
+    .top-bar-content,
+    .events-container,
+    .event-card {
+        width: 100%;
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+    }
+}
+
+/* Remove duplicate glow animations */
+@keyframes glow {
+    0%, 100% { 
+        text-shadow: 
+            3px 3px 0 #000,
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000,
+            0 0 15px rgba(255, 215, 0, 0.5);
+        transform: scale(1);
+    }
+    50% { 
+        text-shadow: 
+            3px 3px 0 #000,
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000,
+            0 0 25px rgba(255, 215, 0, 0.8);
+        transform: scale(1.05);
+    }
+}
+
+/* Consolidate button styles */
+.button-base {
+    background: transparent;
+    color: #f2d867;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 2px solid #f2d867;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Remove duplicate visualizer styles */
+.visualizer-base {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Remove duplicate hover effects */
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.1);
+}
+
+/* Upcoming Events Section */
+#upcoming-events {
+    border: 4px solid #e93a1f;
+    border-radius: 12px;
+    padding: 35px;
+    margin: 35px auto;
+    background: linear-gradient(180deg, rgba(26, 26, 26, 0.95), rgba(51, 51, 51, 0.95));
+    width: calc(100% - 70px);
+    box-sizing: border-box;
+}
+
+.events-container {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.event-card {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Completed event styling with repeating animation */
+.event-card.completed {
+    background: linear-gradient(
+        rgba(0, 255, 0, 0.08),
+        rgba(26, 26, 26, 0.8)
+    );
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    animation: completedPulse 4s ease-in-out infinite;  /* Slower, infinite animation */
+}
+
+.event-card.completed .event-content h3 {
+    color: #00ff00;
+}
+
+.event-card.completed::before {
+    content: 'âœ“';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: rgba(0, 255, 0, 0.6);
+    font-size: 1.5em;
+    animation: checkmarkPulse 4s infinite;  /* Continuous checkmark animation */
+}
+
+/* In-progress event styling with active animation */
+.event-card.in-progress {
+    background: linear-gradient(
+        rgba(255, 255, 0, 0.15),
+        rgba(26, 26, 26, 0.8)
+    );
+    border: 1px solid rgba(255, 255, 0, 0.4);
+    animation: activePulse 3s infinite;  /* Continuous active state */
+}
+
+.event-card.in-progress .event-content h3 {
+    color: #ffff00;
+}
+
+.event-card.in-progress::before {
+    content: 'âš¡';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: rgba(255, 255, 0, 0.8);
+    font-size: 1.5em;
+    animation: lightningPulse 1.5s infinite;
+}
+
+/* Upcoming event styling */
+.event-card.upcoming {
+    background: linear-gradient(
+        rgba(255, 0, 0, 0.05),
+        rgba(26, 26, 26, 0.8)
+    );
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.event-card.upcoming .event-content h3 {
+    color: #ff0000;
+}
+
+/* Animations */
+@keyframes completedPulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.1); }
+    50% { box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.2); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.1); }
+}
+
+@keyframes checkmarkPulse {
+    0% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 0.4; transform: scale(1); }
+}
+
+@keyframes activePulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 0, 0.4); }
+    50% { box-shadow: 0 0 20px 10px rgba(255, 255, 0, 0.2); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 0, 0.4); }
+}
+
+@keyframes lightningPulse {
+    0% { opacity: 0.4; transform: scale(1) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.2) rotate(5deg); }
+    100% { opacity: 0.4; transform: scale(1) rotate(0deg); }
+}
+
+/* Keep teaser text yellow for all cards */
+.event-teaser {
+    color: #f2d867 !important;
+}
+
+/* Event content layout */
+.event-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px; /* Increased gap */
+    width: 100%;
+}
+
+/* Event title styling */
+.event-content h3 {
+    font-size: 1.8em;
+    color: #e93a1f;
+    margin: 0;
+    flex: 1;
+    min-width: 200px; /* Minimum width for title */
+}
+
+/* Event teaser styling */
+.event-teaser {
+    font-size: 1.1em;
+    color: #ddd;
+    margin: 0;
+    flex: 2;
+    text-align: right;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .event-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .event-teaser {
+        text-align: left;
+    }
+}
+
+/* Section headings */
+#what-is h2 {
+  color: #c13a1c;
+  margin-bottom: 20px;
+}
+
+#what-is p {
+  color: #f2d867;
+}
+
+/* Add a gentle pulse to the Telegram button */
+@keyframes gentlePulse {
+  0% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-50%) scale(1.05); }
+  100% { transform: translateY(-50%) scale(1); }
+}
+
+/* Add shine effect to button */
+.telegram-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.telegram-button:hover::after {
+  opacity: 1;
+}
+
+/* Focus states for better accessibility */
+.telegram-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.5);
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .telegram-button {
+    border: 2px solid ButtonText;
+  }
+}
+
+/* Audio controls styling */
+.audio-controls {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.audio-controls.visible {
+  opacity: 1;
+}
+
+/* Style for the interactive D */
+.charizard-text {
+  position: relative;
+  display: inline-block;
+}
+
+.charizard-d {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  color: inherit;  /* Match parent color */
+  font-size: inherit;  /* Match parent size */
+  font-weight: inherit;  /* Match parent weight */
+  font-family: inherit;  /* Match parent font */
+  display: inline-block;
+  position: relative;
+}
+
+.charizard-d.playing {
+  animation: subtlePulse 1.5s infinite;
+}
+
+@keyframes subtlePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Clean volume indicator styling */
+.volume-indicator {
+  position: absolute;
+  left: calc(100% + 35px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.075em;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease;
+  width: 3px;
+  height: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  z-index: 3;
+}
+
+/* Style the actual icon */
+.volume-indicator span {
+  display: inline-block;
+  color: #FFA500;
+  text-shadow: 0 0 3px rgba(255, 140, 0, 0.6);
+  transform: scale(0.8);
+}
+
+/* Special positioning for mute icon - much more left shift */
+.volume-indicator.muted span {
+  transform: scale(0.8) translateX(8px);  /* Increased from 2px to 8px */
+}
+
+/* Maintain size for all states */
+.volume-indicator span,
+.volume-indicator.half span {
+  font-size: inherit;
+  transform: scale(0.8);
+}
+
+.volume-indicator:hover span {
+  color: #FFD700;
+  transform: scale(0.9);
+}
+
+.volume-indicator.visible {
+  opacity: 1;
+}
+
+/* Remove old fire effect */
+.play-overlay.playing::before {
+  display: none;
+}
+
+/* Fire visualizer for full Charizard section */
+.d-visualizer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.play-overlay.playing .d-visualizer {
+  opacity: 1;
+}
+
+.flame-particle {
+  width: 3%;
+  height: 20px;
+  background: linear-gradient(to top, 
+    rgba(255, 69, 0, 0.9),   /* Base orange */
+    rgba(255, 140, 0, 0.8),  /* Mid orange */
+    rgba(255, 215, 0, 0.4)   /* Yellow tip */
+  );
+  transform-origin: bottom;
+  transition: height 0.1s ease;
+}
+
+/* Play overlay */
+.play-overlay {
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 100%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Position h1 for overlay */
+h1 {
+  position: relative;
+  display: inline-block;  /* Changed to inline-block */
+}
+
+/* Social links icon styling */
+.social-link img {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover img {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+/* Audio visualizer - also in blue to test */
+.audio-visualizer {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1px;
+  height: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.audio-visualizer.active {
+  opacity: 1;
+}
+
+.visualizer-bar {
+  width: 2px;
+  height: 2px;
+  background: linear-gradient(to top, 
+    #0095ff,  /* Changed to blue */
+    #00ffff   /* Light blue */
+  );
+  transform-origin: bottom;
+  transition: transform 0.1s ease;
+}
+
+/* Fixed bottom audio visualizer */
+.bottom-visualizer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bottom-visualizer.active {
+  opacity: 1;
+}
+
+.bottom-bar {
+  width: 3%;
+  height: 100%;
+  background: linear-gradient(to top, 
+    rgba(255, 69, 0, 0.95),  /* Brighter orange base */
+    rgba(255, 140, 0, 0.8),  /* Mid orange */
+    rgba(255, 215, 0, 0.6)   /* Yellow tip */
+  );
+  transform-origin: bottom;
+  transition: all 0.1s ease;
+}
+
+.bottom-bar.active {
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}
+
+/* Social icons styling */
+.social-links img {
+    height: 24px;
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+/* Telegram icon - white */
+.social-links a[href*="t.me"] img {
+    filter: none;  /* Show original icon without white/orange overlay */
+}
+
+/* DexScreener icon - specific orange */
+.social-links a[href*="dexscreener"] img {
+    filter: none;  /* Show original icon without white/orange overlay */
+}
+
+/* Hover effects */
+.social-links a:hover img {
+    transform: scale(1.1);
+    filter: none;  /* Remove color change */
+    box-shadow: 0 0 15px rgba(233, 58, 31, 0.5);  /* Orange glow */
+}
+
+/* Center alignment for sections */
+#what-is,
+#upcoming-events {
+  max-width: 1000px;  /* Match Charizard section width */
+  margin: 0 auto;     /* Center horizontally */
+  padding: 60px 20px; /* Keep consistent padding */
+}
+
+/* Events container adjustment */
+.events-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  width: 100%;        /* Full width of parent */
+  margin: 0 auto;     /* Center horizontally */
+}
+
+/* Sleek section adjustment */
+.sleek-section {
+  width: 100%;        /* Full width of parent */
+  margin: 30px auto;  /* Center horizontally */
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.2);
+}
+
+/* Section spacing */
+#what-is,
+#upcoming-events {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* Add specific margin to create space between sections */
+#what-is {
+  margin-top: 60px;    /* Space after Charizard section */
+  margin-bottom: 60px; /* Space before upcoming events */
+}
+
+#upcoming-events {
+  margin-top: 60px;    /* Space after what-is section */
+  margin-bottom: 60px; /* Space at bottom */
+}
+
+/* Keep other styles */
+.events-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.sleek-section {
+  width: 100%;
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.2);
+}
+
+/* What is this about section styling */
+#what-is {
+    position: relative;
+    background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(51, 51, 51, 0.9));
+    border: 1px solid rgba(233, 58, 31, 0.5);
+    border-radius: 15px;
+    padding: 40px;
+    margin: 60px auto;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    overflow: hidden;
+}
+
+#what-is::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('path-to-charizard-watermark.png') center/contain no-repeat;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+#what-is h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+    color: #c13a1c;
+}
+
+/* Remove old timeline styles */
+.events-timeline,
+.timeline-track,
+.timeline-progress,
+.event-card::before {
+    display: none;
+}
+
+@keyframes gentlePulse {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+/* New clean base for Upcoming Events section */
+#upcoming-events {
+    border: 4px solid #e93a1f;
+    border-radius: 12px;
+    padding: 35px;
+    margin: 35px auto;
+    background: linear-gradient(180deg, rgba(26, 26, 26, 0.95), rgba(51, 51, 51, 0.95));
+    width: calc(100% - 70px);
+    box-sizing: border-box;
+}
+
+.events-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.event-card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 25px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Reset ALL potential full-width forcing */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: transparent;
+}
+
+/* Adjust media query for new width */
+@media screen and (max-width: 1400px) {
+    .container {
+        width: 95% !important;
+        min-width: 0 !important;
+    }
+}
+
+/* Update any other yellow/gold elements */
+button.yellow-button,
+.yellow-highlight {
+    background: #f2d867;
+    border-color: #f2d867;
+}
+
+/* Update all orange text to new orange */
+.title-container h1 {
+    color: #c13a1c;  /* New red color */
+}
+
+/* Update any other orange text elements */
+.orange-text,
+.highlight-text {
+    color: #c13a1c;  /* Changed from orange to new red */
+}
+
+/* Keep yellow updates */
+.progress-bar,
+.token-address,
+button.yellow-button,
+.yellow-highlight {
+    border-color: #f2d867;
+}
+
+.token-address:hover,
+button.yellow-button:hover {
+    border-color: #f2d867;
+    box-shadow: 0 0 10px #f2d867;
+}
+
+/* Keep all other yellow text updates */
+.yellow-text,
+.highlight-text {
+    color: #f2d867;
+}
+
+/* Remove shine from top bar */
+.top-bar::before {
+    display: none;  /* Remove shine effect */
+}
+
+/* Add wrapper for main container */
+.container-wrapper {
+    padding-top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+}
+
+/* New Community Wallet Section */
+.community-wallet {
+    width: 100%;
+    padding: 20px;
+}
+
+.wallet-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+}
+
+.wallet-balance {
+    flex: 1.5;  /* Take more space */
+    color: #f2d867;
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding-left: 15px;
+    white-space: nowrap;  /* Keep on one line */
+}
+
+.wallet-address {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #f2d867;
+    border-radius: 6px;
+    width: auto;  /* Let it size to content */
+    margin: 0 auto;  /* Center horizontally */
+}
+
+.wallet-address .token-label {
+    font-size: 1rem;  /* Increased size */
+    color: #f2d867;
+    font-weight: bold;
+    margin-right: 12px;  /* Added spacing */
+}
+
+.wallet-address .token-text {
+    font-size: 1.1rem;
+    margin: 0 8px;
+}
+
+.wallet-address .copy-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: #f2d867;
+    transition: color 0.3s ease;
+}
+
+.wallet-address .copy-icon:hover {
+    color: #fff;
+}
+
+.wallet-note {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(233, 58, 31, 0.5);  /* Changed to orange */
+}
+
+.wallet-note p {
+    color: #f2d867;
+}
+
+.wallet-address:hover {
+    background: rgba(255, 255, 255, 0.15);  /* Slightly lighter on hover */
+}
+
+.wallet-address .token-text span {
+    color: #f2d867;
+}
+
+.latest-transaction {
+    font-size: 0.9rem;
+    color: #ddd;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+/* Latest X Post Section */
+.x-post-section {
+    width: 100%;
+    max-width: 800px;  /* Optional: maximum width for very large screens */
+    margin: 0 auto;
+}
+
+.x-post {
+    width: 100%;  /* Fill container width */
+    max-width: 100%;  /* Remove max-width restriction */
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.twitter-timeline {
+    width: 100% !important;  /* Force full width */
+    min-height: 400px;
+}
+
+/* Ensure proper grid layout on mobile */
+@media screen and (max-width: 768px) {
+    .events-container {
+        grid-template-columns: 1fr;  /* Single column on mobile */
+        gap: 30px;  /* Increased gap for separators */
+    }
+}
+
+/* Update token and safe addresses to yellow */
+.token-address .token-text span,
+.wallet-address .token-text span {
+    color: #f2d867;  /* Yellow color */
+}
+
+/* Update labels to yellow */
+.token-label,
+.top-bar-content span {  /* This targets "Get on it:" */
+    color: #f2d867;
+}
+
+/* Update What is this about border */
+#what-is {
+    border: 1px solid rgba(233, 58, 31, 0.5);  /* Orange border */
+}
+
+/* Ensure all text in wallet section is white or yellow */
+.wallet-balance span,
+.wallet-container span {
+    color: #f2d867;
+}
+
+/* Uniform styling for all main sections */
+.main-section {
+    width: 100%;
+    max-width: 1000px;  /* Match current $Charizard section width */
+    margin: 30px auto;
+    padding: 25px;
+    background: rgba(26, 26, 26, 0.8);
+    border: 1px solid rgba(233, 58, 31, 0.5);
+    border-radius: 12px;
+}
+
+/* Match exactly the What is this about title styling */
+.main-section h2 {
+    color: #c13a1c;  /* Match What is this about color */
+    font-size: 2.5rem;  /* Match What is this about size */
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: normal;  /* Match What is this about weight */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);  /* Match What is this about shadow */
+}
+
+/* Ensure x-post section matches exactly */
+.x-post-section {
+    width: 100%;
+    max-width: 1000px;  /* Match other sections */
+}
+
+.x-post {
+    width: 100%;
+    margin: 0 auto;
+    background: transparent;  /* Remove any background */
+}
+
+/* Ensure events and community safe sections match */
+#upcoming-events,
+.community-wallet {
+    max-width: 1000px;  /* Match other sections */
+}
+
+/* Make all main sections match the current $Charizard section width */
+.main-section,
+#what-is,
+#upcoming-events,
+.community-wallet,
+.x-post-section {
+    width: 100%;
+    max-width: 1000px;  /* Match current $Charizard section width */
+    margin: 30px auto;
+    padding: 25px;
+    background: rgba(26, 26, 26, 0.8);
+    border: 1px solid rgba(233, 58, 31, 0.5);
+    border-radius: 12px;
+}
+
+/* Ensure content within sections also spans full width */
+.events-container,
+.wallet-container,
+.x-post {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Keep hero section at current width */
+.hero-section {
+    width: 100%;
+    max-width: 1000px;  /* Match current width */
+    margin: 0 auto;
+}
+
+.statement-divider {
+    width: 90%;
+    height: 1px;
+    background: rgba(233, 58, 31, 0.5);
+    margin: 25px auto;
+}
+
+.charizard-statement {
+    text-align: center;
+    font-size: 1.4em;
+    margin-top: 20px;
+}
+
+.charizard-statement strong {
+    color: #f2d867;
+    text-shadow: 2px 2px 4px rgba(233, 58, 31, 0.5);
+}
+
+/* Top bar responsive adjustments */
+@media screen and (max-width: 768px) {
+    .top-bar {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .top-bar-content {
+        display: flex;
+        flex-direction: row;  /* Keep items in a row */
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;  /* Allow wrapping if needed */
+        gap: 10px;
+    }
+
+    /* Center How to Buy button */
+    .how-to-buy-dropdown {
+        margin: 0 auto;
+    }
+
+    /* Keep "Get on it" and icons together */
+    .social-links {
+        display: inline-flex;  /* Keep on same line */
+        gap: 8px;
+        margin: 0;
+    }
+
+    .social-links img {
+        width: 24px;  /* Slightly smaller icons */
+        height: 24px;
+    }
+
+    /* Adjust token address */
+    .token-address {
+        width: 100%;  /* Full width on its own line */
+        font-size: 0.9em;
+    }
+
+    /* Keep "Get on it" and social links together */
+    .top-bar-content > span {
+        margin-right: 5px;
+    }
+}
+
+/* Add this class to your HTML */
+.token-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Update event card separators */
+.event-card:not(:last-child) {
+    position: relative;
+    margin-bottom: 20px;  /* Space for divider */
+}
+
+.event-card:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(233, 58, 31, 0.5);  /* Orange divider */
+}
+
+/* Update Community Safe divider to match */
+.wallet-note {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(233, 58, 31, 0.5);  /* Changed to orange */
+}
+
+/* Keep text color yellow */
+.wallet-note p {
+    color: #f2d867;
+}
+
+/* Event card color overlays */
+.event-card.completed {
+    background: linear-gradient(
+        rgba(0, 255, 0, 0.08),  /* Subtle green */
+        rgba(26, 26, 26, 0.8)
+    );
+    border: 1px solid rgba(0, 255, 0, 0.3);  /* Slight green border */
+    position: relative;
+}
+
+.event-card.in-progress {
+    background: linear-gradient(
+        rgba(255, 255, 0, 0.15),  /* More noticeable yellow */
+        rgba(26, 26, 26, 0.8)
+    );
+    border: 1px solid rgba(255, 255, 0, 0.4);  /* Yellow border */
+    position: relative;
+}
+
+.event-card.upcoming {
+    background: linear-gradient(
+        rgba(255, 0, 0, 0.05),  /* 5% red */
+        rgba(26, 26, 26, 0.8)
+    );
+}
